@@ -1,10 +1,26 @@
-# pushd UEFITool
+#! pushd UEFITool
+mv UEFITool UEFITool28
 install -dm 0755 %{buildroot}/usr/bin/
-install -m 755 -p UEFITool %{buildroot}/usr/bin/
-# pushd UEFIPatch
-# install -m 755 -p UEFIPatch %{buildroot}/usr/bin/
-# install -m 755 -p patches*.txt %{buildroot}/usr/bin/
-# popd
-# pushd UEFIReplace
-# install -m 755 -p UEFIReplace %{buildroot}/usr/bin/
-# popd
+install -m 755 -p UEFITool28 %{buildroot}/usr/bin/UEFITool
+#!
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/512x512/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/256x256/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/128x128/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/64x64/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/48x48/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/32x32/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/16x16/apps/
+install -m 755 -p icons/uefitool_512x512.png %{buildroot}/usr/share/icons/hicolor/512x512/apps/uefitool.png
+install -m 755 -p icons/uefitool_256x256.png %{buildroot}/usr/share/icons/hicolor/256x256/apps/uefitool.png
+install -m 755 -p icons/uefitool_128x128.png %{buildroot}/usr/share/icons/hicolor/128x128/apps/uefitool.png
+install -m 755 -p icons/uefitool_64x64.png %{buildroot}/usr/share/icons/hicolor/64x64/apps/uefitool.png
+install -m 755 -p icons/uefitool_48x48.png %{buildroot}/usr/share/icons/hicolor/48x48/apps/uefitool.png
+install -m 755 -p icons/uefitool_32x32.png %{buildroot}/usr/share/icons/hicolor/32x32/apps/uefitool.png
+install -m 755 -p icons/uefitool_16x16.png %{buildroot}/usr/share/icons/hicolor/16x16/apps/uefitool.png
+#! pushd UEFIPatch
+#! install -m 755 -p UEFIPatch %{buildroot}/usr/bin/
+#! install -m 755 -p patches*.txt %{buildroot}/usr/bin/
+#! popd
+#! pushd UEFIReplace
+#! install -m 755 -p UEFIReplace %{buildroot}/usr/bin/
+#! popd
