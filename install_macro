@@ -1,0 +1,10 @@
+# pushd UEFITool
+install -dm 0755 %{buildroot}/usr/bin/
+install -m 755 -p UEFITool %{buildroot}/usr/bin/
+# pushd UEFIPatch
+# install -m 755 -p UEFIPatch %{buildroot}/usr/bin/
+# install -m 755 -p patches*.txt %{buildroot}/usr/bin/
+# popd
+# pushd UEFIReplace
+# install -m 755 -p UEFIReplace %{buildroot}/usr/bin/
+# popd

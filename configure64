@@ -1,0 +1,12 @@
+pushd ../
+qmake uefitool.pro CONFIG+=release PREFIX=/usr
+make -j20 V=1 VERBOSE=1
+popd
+pushd ../UEFIPatch
+qmake uefipatch.pro CONFIG+=release PREFIX=/usr
+make -j20 V=1 VERBOSE=1
+popd
+pushd ../UEFIReplace
+qmake uefireplace.pro CONFIG+=release PREFIX=/usr
+make -j20 V=1 VERBOSE=1
+popd
