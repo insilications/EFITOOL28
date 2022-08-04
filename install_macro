@@ -1,7 +1,7 @@
 #! pushd UEFITool
-mv UEFITool UEFITool28
 install -dm 0755 %{buildroot}/usr/bin/
-install -m 755 -p UEFITool28 %{buildroot}/usr/bin/UEFITool
+install -m 755 -p UEFITool %{buildroot}/usr/bin/UEFITool
+mv %{buildroot}/usr/bin/UEFITool %{buildroot}/usr/bin/UEFITool28
 #!
 install -dm 0755 %{buildroot}/usr/share/applications/
 install -m 755 -p uefitool28.desktop %{buildroot}/usr/share/applications/

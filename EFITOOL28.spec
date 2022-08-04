@@ -5,12 +5,14 @@
 %define keepstatic 1
 Name     : EFITOOL28
 Version  : 0.28
-Release  : 16
+Release  : 17
 URL      : file:///aot/build/clearlinux/packages/EFITOOL28/EFITOOL28-v0.28.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/EFITOOL28/EFITOOL28-v0.28.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: EFITOOL28-bin = %{version}-%{release}
+Requires: EFITOOL28-data = %{version}-%{release}
 BuildRequires : binutils-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-qmake
@@ -74,6 +76,23 @@ BuildRequires : zlib-staticdev
 
 %description
 No detailed description available
+
+%package bin
+Summary: bin components for the EFITOOL28 package.
+Group: Binaries
+Requires: EFITOOL28-data = %{version}-%{release}
+
+%description bin
+bin components for the EFITOOL28 package.
+
+
+%package data
+Summary: data components for the EFITOOL28 package.
+Group: Data
+
+%description data
+data components for the EFITOOL28 package.
+
 
 %prep
 %setup -q -n EFITOOL28
@@ -146,12 +165,12 @@ export QT_FONT_DPI=88
 export GTK_USE_PORTAL=1
 export DESKTOP_SESSION=plasma
 ## altflags1f end
-%qmake
+%qmake   CONFIG+=release
 test -r config.log && cat config.log
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
 
 %install
-export SOURCE_DATE_EPOCH=1659581550
+export SOURCE_DATE_EPOCH=1659581777
 rm -rf %{buildroot}
 ## altflags1f content
 ## altflags1
@@ -215,9 +234,9 @@ export GTK_USE_PORTAL=1
 export DESKTOP_SESSION=plasma
 ## altflags1f end
 ## install_macro start
-mv UEFITool UEFITool28
 install -dm 0755 %{buildroot}/usr/bin/
-install -m 755 -p UEFITool28 %{buildroot}/usr/bin/UEFITool
+install -m 755 -p UEFITool %{buildroot}/usr/bin/UEFITool
+mv %{buildroot}/usr/bin/UEFITool %{buildroot}/usr/bin/UEFITool28
 install -dm 0755 %{buildroot}/usr/share/applications/
 install -m 755 -p uefitool28.desktop %{buildroot}/usr/share/applications/
 install -dm 0755 %{buildroot}/usr/share/icons/hicolor/512x512/apps/
@@ -240,3 +259,18 @@ install -m 755 -p icons/uefitool_16x16.png %{buildroot}/usr/share/icons/hicolor/
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/UEFITool28
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/applications/uefitool28.desktop
+/usr/share/icons/hicolor/128x128/apps/uefitool.png
+/usr/share/icons/hicolor/16x16/apps/uefitool.png
+/usr/share/icons/hicolor/256x256/apps/uefitool.png
+/usr/share/icons/hicolor/32x32/apps/uefitool.png
+/usr/share/icons/hicolor/48x48/apps/uefitool.png
+/usr/share/icons/hicolor/512x512/apps/uefitool.png
+/usr/share/icons/hicolor/64x64/apps/uefitool.png
