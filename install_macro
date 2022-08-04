@@ -3,6 +3,9 @@ mv UEFITool UEFITool28
 install -dm 0755 %{buildroot}/usr/bin/
 install -m 755 -p UEFITool28 %{buildroot}/usr/bin/UEFITool
 #!
+install -dm 0755 %{buildroot}/usr/share/applications/
+install -m 755 -p uefitool28.desktop %{buildroot}/usr/share/applications/
+#!
 install -dm 0755 %{buildroot}/usr/share/icons/hicolor/512x512/apps/
 install -dm 0755 %{buildroot}/usr/share/icons/hicolor/256x256/apps/
 install -dm 0755 %{buildroot}/usr/share/icons/hicolor/128x128/apps/

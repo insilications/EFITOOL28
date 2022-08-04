@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : EFITOOL28
-Version  : 0.28.0
-Release  : 14
-URL      : file:///aot/build/clearlinux/packages/EFITOOL28/EFITOOL28-v0.28.0.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/EFITOOL28/EFITOOL28-v0.28.0.tar.gz
+Version  : 0.28
+Release  : 16
+URL      : file:///aot/build/clearlinux/packages/EFITOOL28/EFITOOL28-v0.28.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/EFITOOL28/EFITOOL28-v0.28.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -149,12 +149,9 @@ export DESKTOP_SESSION=plasma
 %qmake
 test -r config.log && cat config.log
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
-## ccache stats
-ccache -s || :
-## ccache stats
 
 %install
-export SOURCE_DATE_EPOCH=1659580554
+export SOURCE_DATE_EPOCH=1659581550
 rm -rf %{buildroot}
 ## altflags1f content
 ## altflags1
@@ -218,16 +215,25 @@ export GTK_USE_PORTAL=1
 export DESKTOP_SESSION=plasma
 ## altflags1f end
 ## install_macro start
-# pushd UEFITool
+mv UEFITool UEFITool28
 install -dm 0755 %{buildroot}/usr/bin/
-install -m 755 -p UEFITool %{buildroot}/usr/bin/
-# pushd UEFIPatch
-# install -m 755 -p UEFIPatch %{buildroot}/usr/bin/
-# install -m 755 -p patches*.txt %{buildroot}/usr/bin/
-# popd
-# pushd UEFIReplace
-# install -m 755 -p UEFIReplace %{buildroot}/usr/bin/
-# popd
+install -m 755 -p UEFITool28 %{buildroot}/usr/bin/UEFITool
+install -dm 0755 %{buildroot}/usr/share/applications/
+install -m 755 -p uefitool28.desktop %{buildroot}/usr/share/applications/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/512x512/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/256x256/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/128x128/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/64x64/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/48x48/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/32x32/apps/
+install -dm 0755 %{buildroot}/usr/share/icons/hicolor/16x16/apps/
+install -m 755 -p icons/uefitool_512x512.png %{buildroot}/usr/share/icons/hicolor/512x512/apps/uefitool.png
+install -m 755 -p icons/uefitool_256x256.png %{buildroot}/usr/share/icons/hicolor/256x256/apps/uefitool.png
+install -m 755 -p icons/uefitool_128x128.png %{buildroot}/usr/share/icons/hicolor/128x128/apps/uefitool.png
+install -m 755 -p icons/uefitool_64x64.png %{buildroot}/usr/share/icons/hicolor/64x64/apps/uefitool.png
+install -m 755 -p icons/uefitool_48x48.png %{buildroot}/usr/share/icons/hicolor/48x48/apps/uefitool.png
+install -m 755 -p icons/uefitool_32x32.png %{buildroot}/usr/share/icons/hicolor/32x32/apps/uefitool.png
+install -m 755 -p icons/uefitool_16x16.png %{buildroot}/usr/share/icons/hicolor/16x16/apps/uefitool.png
 ## install_macro end
 ## start %find_lang macros
 ## end %find_lang macros
